@@ -1,5 +1,11 @@
 language: ruby
 
+notifications:
+  email: false
+
 os:
   - linux
   - osx
+
+script:
+  ruby test1.rb
