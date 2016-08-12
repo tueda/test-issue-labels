@@ -7,5 +7,8 @@ os:
   - linux
   - osx
 
+install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then gem install test-unit; fi
+
 script:
   ruby test1.rb
