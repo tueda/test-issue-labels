@@ -1,4 +1,4 @@
-require 'test/unit'
+require "test/unit"
 
 class TestSample < Test::Unit::TestCase
   def test_foo
@@ -9,5 +9,4 @@ class TestSample < Test::Unit::TestCase
   end
 end
 
-require 'test/unit/version'
-p Test::Unit::VERSION
+ARGV << "--verbose=normal"
