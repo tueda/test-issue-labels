@@ -8,3 +8,6 @@ class TestSample < Test::Unit::TestCase
     assert(2 == 2)
   end
 end
+
+require 'test/unit/version'
+p Test::Unit::VERSION
