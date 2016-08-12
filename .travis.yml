@@ -7,5 +7,15 @@ os:
   - linux
   - osx
 
+rvm:
+  - 1.8.7
+  - 1.9.2
+  - 1.9.3p551 # linux
+  - 2.0.0p481 # osx
+  - 2.1
+  - 2.2
+  - 2.3.0
+  - 2.3.1
+
 script:
   ruby test1.rb
