@@ -8,5 +8,3 @@ class TestSample < Test::Unit::TestCase
     assert(2 == 2)
   end
 end
-
-ARGV << "--verbose=normal"

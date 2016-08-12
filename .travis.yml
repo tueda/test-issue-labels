@@ -7,5 +7,10 @@ os:
   - linux
   - osx
 
+before_install:
+  - gem install test-unit
+  - gem install test-unit
+  - gem install test-unit
+
 script:
   ruby test1.rb
