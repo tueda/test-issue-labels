@@ -1,20 +1,25 @@
-image:
-  - Visual Studio 2013
-  - Visual Studio 2015
+configuration:
+  - Debug
+  - Release
 
-configuration: Release
+environment:
+  matrix:
+#   - generator: "Visual Studio 8 2005 Win64"
+#   - generator: "Visual Studio 9 2008 Win64"
+    - generator: "Visual Studio 10 2010 Win64"
+    - generator: "Visual Studio 11 2012 Win64"
+    - generator: "Visual Studio 12 2013 Win64"
+    - generator: "Visual Studio 14 2015 Win64"
 
 build:
   project: test.sln
   verbosity: detailed
 
 before_build:
-  - cmake .
+  - cmake -G "%generator%" .
 
 after_build:
-  - dir
-  - dir Release
-  - Release\test.exe
+  - "%configuration%\\test.exe"
 
 notifications:
   - provider: Email
