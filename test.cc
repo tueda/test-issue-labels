@@ -1,4 +1,4 @@
-#define alignof __alignof
+//#define alignof __alignof
 #include <cstdio>
 
 int main() {
