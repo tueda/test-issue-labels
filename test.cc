@@ -1,3 +1,4 @@
+#define alignof __alignof
 #include <cstdio>
 
 int main() {
@@ -6,5 +7,6 @@ int main() {
 #else
   printf("No _MSC_VER\n");
 #endif
+  printf("%d\n", (int)alignof(int));
   return 0;
 }
