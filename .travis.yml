@@ -1,0 +1,25 @@
+language: objective-c
+
+rvm: system
+
+before_install:
+  - brew update
+  - brew --env
+  - brew config
+
+install:
+  - mkdir -p $(brew --repo)/Library/Taps/travis
+  - ln -s $TRAVIS_BUILD_DIR $(brew --repo)/Library/Taps/travis/homebrew-testtap
+
+script:
+  - brew audit --strict $PACKAGE
+  - brew install -v --only-dependencies $PACKAGE $OPTIONS
+  - brew install -v $PACKAGE $OPTIONS
+  - brew cat $PACKAGE | grep -q "test do" && brew test -v $PACKAGE
+
+notifications:
+  email: false
+
+env:
+  - PACKAGE=form
+  - PACKAGE=form OPTIONS=--HEAD
