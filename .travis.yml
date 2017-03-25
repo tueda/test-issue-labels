@@ -23,3 +23,4 @@ notifications:
 env:
   - PACKAGE=form
   - PACKAGE=form OPTIONS=--HEAD
+  - PACKAGE=form-mincer
