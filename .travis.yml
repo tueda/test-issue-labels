@@ -24,4 +24,5 @@ env:
   - PACKAGE=form
   - PACKAGE=form OPTIONS=--HEAD
   - PACKAGE=form-mincer
+  - PACKAGE=form-mincer2
   - PACKAGE=$(cd Formula && ls form-*.rb | sed 's/\.rb$//')
