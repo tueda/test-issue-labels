@@ -1,0 +1,10 @@
+script:
+  - echo 1 >foo.txt
+
+deploy:
+  provider: releases
+  api_key: "$GITHUB_TOKEN"
+  file: foo.txt
+  skip_cleanup: true
+  on:
+    tags: true
