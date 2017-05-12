@@ -1,23 +1,11 @@
-language: objective-c
+sudo: false
+langauge: cpp
+os: osx
+osx_image: xcode8.3
 
 script:
-  #  - curl -L -O https://github.com/vermaseren/form/releases/download/v4.0-20120410/form-4.0-20120410-x86_64-osx.tar.gz
-  #  - tar xvfz form-4.0-20120410-x86_64-osx.tar.gz
-  #  - file form-4.0-20120410-x86_64-osx/*
-  #  - ./form-4.0-20120410-x86_64-osx/form -v
-  #  - otool -L form-4.0-20120410-x86_64-osx/form
-  #  - otool -L form-4.0-20120410-x86_64-osx/tform
-  #  - otool -l form-4.0-20120410-x86_64-osx/form
-  #  - otool -l form-4.0-20120410-x86_64-osx/tform
-  #  - ls /usr/lib/*gmp*
-  - ls /usr/local/opt/gmp/lib/
-  - uname -a
-  - uname -m
-  - uname -n
-  - uname -r
-  - uname -s
-  - uname -v
-  - uname -p
+  - brew update
+  - brew install -v --HEAD https://gist.githubusercontent.com/tueda/df668f4e0c1d47379c41332580310d9a/raw/libfermat.rb
 
 notifications:
   email: false
