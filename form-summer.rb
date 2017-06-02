@@ -1,4 +1,4 @@
-require File.expand_path("../../Library/form_lib", __FILE__)
+require File.expand_path("../Library/form_lib", __FILE__)
 
 class FormSummer < Formula
   desc "Package for harmonic sums"
@@ -55,12 +55,12 @@ class FormSummer < Formula
   end
 
   test do
-    out = pipe_output("form -q -p #{formpath} #{pkgpath/"test2.frm"}").
-      lines.join
+    out = pipe_output("form -q -p #{formpath} #{pkgpath/"test2.frm"}")
+          .lines.join
     assert_equal result(out, "F"), expr("0")
 
-    out = pipe_output("form -q -p #{formpath} #{pkgpath/"test4.frm"}").
-      lines.join
+    out = pipe_output("form -q -p #{formpath} #{pkgpath/"test4.frm"}")
+          .lines.join
     assert_equal result(out, "F"), expr("
        - S(R(1,1,1,1,1,1,1),N)
     ")

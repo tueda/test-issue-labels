@@ -1,4 +1,4 @@
-require File.expand_path("../../Library/form_lib", __FILE__)
+require File.expand_path("../Library/form_lib", __FILE__)
 
 class FormColor < Formula
   desc "Package for calculating color group coefficients"
@@ -28,8 +28,8 @@ class FormColor < Formula
   end
 
   test do
-    out = pipe_output("form -q -p #{formpath} #{pkgpath/"tloop.frm"}").
-      lines.join
+    out = pipe_output("form -q -p #{formpath} #{pkgpath/"tloop.frm"}")
+          .lines.join
     assert_equal result(out, "girth14"), expr("
        + 1/648*NA*cA^7
        - 8/15*d444(cOlpA1,cOlpA2,cOlpA3)*cA
