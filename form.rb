@@ -35,8 +35,7 @@ class Form < Formula
   def install
     ENV["CFLAGS"] = normalize_flags(ENV["CFLAGS"])
     ENV["CXXFLAGS"] = normalize_flags(ENV["CXXFLAGS"])
-    system "autoreconf", "-i" if build.devel? || build.head?
-    system "sh", "scripts/gendate.sh", "-c", "-o", "sources/production-date.h" if (build.devel? || build.head?) && File.exist?("scripts/gendate.sh")
+    system "autoreconf", "-i" if build.head?
     args = [
       "--prefix=#{prefix}",
       "--disable-dependency-tracking",
@@ -48,7 +47,7 @@ class Form < Formula
     system "./configure", *args
     system "make"
     # NOTE: The test suite of v4.1 depends on Linux strace.
-    system "make", "check" if build.with?("test") && (build.devel? || build.head? || OS.linux?)
+    system "make", "check" if build.with?("test") && (build.head? || OS.linux?)
     system "make", "install"
   end
 
