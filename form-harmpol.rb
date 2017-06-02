@@ -78,7 +78,7 @@ class FormHarmpol < Formula
       P;
       .end
     EOS
-    out = pipe_output("form -q -p #{formpath} test.frm").lines.join
+    out = pipe_output("#{formbin} -q -p #{formpath} test.frm").lines.join
     assert_equal result(out, "F1"), expr("
       2*s6 + 8*li6half + 8*ln2*li5half + 4*ln2^2*li4half + 1/9*ln2^6 - 31/8*z5
       *ln2 + 7/6*z3*ln2^3 - 37/16*z3^2 - 1/2*z2*ln2^4 - 129/140*z2^3;

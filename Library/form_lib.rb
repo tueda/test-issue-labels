@@ -1,6 +1,11 @@
 require "formula"
 
 class Formula
+  def formbin
+    # Example: form
+    ENV["FORM"] || "form"
+  end
+
   def formpath
     # Example: /usr/local/share/form
     share/"#{HOMEBREW_PREFIX/"share/form"}"

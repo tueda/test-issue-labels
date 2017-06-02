@@ -1,5 +1,5 @@
-language: objective-c
-
+language: ruby
+os: osx
 rvm: system
 
 before_install:
@@ -10,12 +10,29 @@ before_install:
 install:
   - mkdir -p $(brew --repo)/Library/Taps/travis
   - ln -s $TRAVIS_BUILD_DIR $(brew --repo)/Library/Taps/travis/homebrew-form
+  # Install the latest FORM for form-packages.
+  - |
+    if [ "$PACKAGE" = form-packages ]; then
+      brew install form --HEAD
+    fi
 
 script:
+  # Setup for form-packages. Testing all FORM packages allows us to check if
+  # there is no conflict on file names in $FORMPATH.
+  - |
+    if [ "$PACKAGE" = form-packages ]; then
+      PACKAGE=$(ls form-*.rb | sed 's/\.rb$//')
+      FORM='tform -w4'
+    fi
   - brew audit --strict $PACKAGE
   - brew install -v --only-dependencies $PACKAGE $OPTIONS
   - brew install -v $PACKAGE $OPTIONS
   - brew test -v $PACKAGE
+  # List the installed files in $FORMPATH for form-packages.
+  - |
+    if [ -n "${FORM+set}" ]; then
+      ls -LR $(brew --prefix)/share/form
+    fi
 
 notifications:
   email: false
@@ -23,6 +40,4 @@ notifications:
 env:
   - PACKAGE=form
   - PACKAGE=form OPTIONS=--HEAD
-  # The next line checks all form-*.rb formulae. $(...) is evaluated after
-  # the repository is cloned to the working directory on Travis CI.
-  - PACKAGE=$(ls form-*.rb | sed 's/\.rb$//')
+  - PACKAGE=form-packages

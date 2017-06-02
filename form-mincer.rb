@@ -37,14 +37,14 @@ class FormMincer < Formula
   end
 
   test do
-    out = pipe_output("form -q -p #{formpath} #{pkgpath/"testmincer1.frm"}")
+    out = pipe_output("#{formbin} -q -p #{formpath} #{pkgpath/"testmincer1.frm"}")
           .lines.join
     assert_equal result(out, "F"), expr("
        - 6695/5184 - 1/48*ep^-3 + 41/288*ep^-2 - 1541/6912*ep^-1 + 5/4*z5 - 1/
       6*z3;
     ")
 
-    out = pipe_output("form -q -p #{formpath} #{pkgpath/"testmincer2.frm"}")
+    out = pipe_output("#{formbin} -q -p #{formpath} #{pkgpath/"testmincer2.frm"}")
           .lines.join
     assert_equal result(out, "F"), expr("
        - 25/64 + 5/16*ep^-2 - 1/2*ep^-1 + 3/8*z3 - 49/16*ep + 9/16*ep*z4 + 33/

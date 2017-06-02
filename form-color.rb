@@ -28,7 +28,7 @@ class FormColor < Formula
   end
 
   test do
-    out = pipe_output("form -q -p #{formpath} #{pkgpath/"tloop.frm"}")
+    out = pipe_output("#{formbin} -q -p #{formpath} #{pkgpath/"tloop.frm"}")
           .lines.join
     assert_equal result(out, "girth14"), expr("
        + 1/648*NA*cA^7
