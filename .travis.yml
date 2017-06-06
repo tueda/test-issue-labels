@@ -1,11 +1,20 @@
 sudo: false
 langauge: cpp
 os: osx
-osx_image: xcode8.3
+osx_image:
+  - xcode6.4
+  - xcode8.3
 
 script:
-  - brew update
-  - brew install -v --HEAD https://gist.githubusercontent.com/tueda/df668f4e0c1d47379c41332580310d9a/raw/libfermat.rb
+  #  - type free
+  #  - type lscpu
+  #  - type sysctl
+  # - system_profiler
+  # - sysctl -a
+  - getconf -a
+  - sysctl -a | grep 'hw.'
+  - system_profiler SPHardwareDataType
+  - ./formset.py --full
 
 notifications:
   email: false
