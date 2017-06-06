@@ -17,8 +17,8 @@ install:
     fi
 
 script:
-  # Setup for form-packages. Testing all FORM packages allows us to check if
-  # there is no conflict on file names in $FORMPATH.
+  # Setup for form-packages. Testing all FORM packages together allows us to
+  # check if there is no conflict on file names in $FORMPATH.
   - |
     if [ "$PACKAGE" = form-packages ]; then
       PACKAGE=$(ls form-*.rb | sed 's/\.rb$//')
