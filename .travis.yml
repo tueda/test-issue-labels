@@ -6,15 +6,16 @@ osx_image:
   - xcode8.3
 
 script:
+  - pwd
   #  - type free
   #  - type lscpu
   #  - type sysctl
   # - system_profiler
   # - sysctl -a
-  - getconf -a
-  - sysctl -a | grep 'hw.'
-  - system_profiler SPHardwareDataType
-  - ./formset.py --full
+  #- getconf -a
+  #- sysctl -a | grep 'hw.'
+  #- system_profiler SPHardwareDataType
+  #- ./formset.py --full
 
 notifications:
   email: false
