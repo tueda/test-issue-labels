@@ -1,0 +1,15 @@
+dist: trusty
+sudo: false
+language: cpp
+
+addons:
+  apt:
+    packages:
+      - libopenmpi-dev
+      - openmpi-bin
+      - valgrind
+
+script:
+  - mpicc -g test1.c
+  - mpirun -np 4 valgrind --suppressions=/usr/share/openmpi/openmpi-valgrind.supp ./a.out
+  - cat /usr/share/openmpi/openmpi-valgrind.supp
