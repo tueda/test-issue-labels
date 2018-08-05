@@ -4,4 +4,4 @@ os:
   - osx
 
 script:
-  - ./bats/bin/bats test1.bats
+  - ./bats/bin/bats -p test1.bats
