@@ -10,16 +10,16 @@ clear_to_end_of_line() {
 }
 
 printf "abcdef"
-go_to_column 2
-printf "34"
+#go_to_column 2
+#printf "34"
 printf "\n"
 
 printf "abcdef"
-go_to_column 2
-printf "34"
+#go_to_column 2
+#printf "34"
 printf "\n"
 
 printf "abcdef"
-go_to_column 2
-printf "34"
+#go_to_column 2
+#printf "34"
 printf "\n"
