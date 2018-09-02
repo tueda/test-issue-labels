@@ -1,21 +1,21 @@
-sudo: false
-langauge: cpp
-os: osx
+langauge: generic
+os:
+  - linux
+  - osx
+dist:
+  - precise
+  - trusty
 osx_image:
   - xcode6.4
+  - xcode7.3
   - xcode8.3
+  - xcode9.4
+  - xcode10
 
 script:
-  - pwd
-  #  - type free
-  #  - type lscpu
-  #  - type sysctl
-  # - system_profiler
-  # - sysctl -a
-  #- getconf -a
-  #- sysctl -a | grep 'hw.'
-  #- system_profiler SPHardwareDataType
-  #- ./formset.py --full
+  - make debug1 DIFF=ab
+  - make debug1 DIFF=ab..
+  - make debug1 DIFF=ab..cd
 
 notifications:
   email: false
