@@ -1,0 +1,21 @@
+language: generic
+os:
+  - linux
+  - osx
+dist:
+  - precise
+  - trusty
+osx_image:
+  - xcode6.4
+  - xcode7.3
+  - xcode8.3
+  - xcode9.4
+  - xcode10
+
+script:
+  - make debug1 DIFF=ab
+  - make debug1 DIFF=ab..
+  - make debug1 DIFF=ab..cd
+
+notifications:
+  email: false
