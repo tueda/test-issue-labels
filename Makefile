@@ -791,20 +791,15 @@ get_rev = \
 	fi; \
 	$2=; \
 	$3=; \
-	type expr; \
-	type sed; \
-	echo $$SHELL; \
-	man expr; \
-	man sed; \
 	if expr "$1" : '[^.]\{1,\}\.\.[^.]' >/dev/null; then \
-		echo 'case 1'; \
+echo 'case 1'; \
 		$2=$$(expr "$1" : '\([^.]\{1,\}\)\.\.'); \
 		$3=$$(expr "$1" : '[^.]\{1,\}\.\.\(.\{1,\}\)'); \
 	elif expr "$1" : '[^.]\{1,\}\.\.$$' >/dev/null; then \
-		echo 'case 2'; \
+echo 'case 2'; \
 		$2=$$(expr "$1" : '\([^.]\{1,\}\)\.\.'); \
 	else \
-		echo 'case 3'; \
+echo 'case 3'; \
 		$2="$1"; \
 	fi
 
