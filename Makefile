@@ -794,6 +794,8 @@ get_rev = \
 	type expr; \
 	type sed; \
 	echo $$SHELL; \
+	man expr; \
+	man sed; \
 	if expr "$1" : '[^.]\+\.\.[^.]' >/dev/null; then \
 		echo 'case 1'; \
 		$2=$$(expr "$1" : '\([^.]\+\)\.\.'); \
