@@ -1,6 +1,9 @@
 plugins {
   id 'java-library'
+  id 'com.github.kamatama41.git-release' version '0.3.0'
 }
+
+version = '0.0.1-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -17,4 +20,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+gitRelease {
+  groupId = 'com.github.tueda'
+  artifactId = 'test1'
+  repoUri = 'git@github.com:tueda/test1.git'
+  repoBranch = 'mvn-repo'
+  releaseBranch = 'java-package'
 }
