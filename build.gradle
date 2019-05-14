@@ -1,0 +1,25 @@
+plugins {
+  id 'java'
+  id 'application'
+}
+
+mainClassName = 'Example'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+  mavenCentral()
+  maven { url 'https://raw.githubusercontent.com/tueda/test1/mvn-repo/repository' }
+}
+
+dependencies {
+  implementation 'com.github.tueda:test1:0.0.1-SNAPSHOT'
+  testImplementation 'com.google.truth:truth:0.44'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+}
+
+test {
+    useJUnitPlatform()
+}
