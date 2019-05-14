@@ -10,4 +10,10 @@ public class LibraryTest {
     Library a = new Library();
     assertThat(a.add(2, 3)).isEqualTo(5);
   }
+
+  @Test
+  public void sub() {
+    Library a = new Library();
+    assertThat(a.sub(3, 2)).isEqualTo(1);
+  }
 }
