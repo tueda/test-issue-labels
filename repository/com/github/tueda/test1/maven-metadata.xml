@@ -3,11 +3,12 @@
   <groupId>com.github.tueda</groupId>
   <artifactId>test1</artifactId>
   <versioning>
-    <release>0.0.2</release>
+    <release>n</release>
     <versions>
       <version>0.0.1-SNAPSHOT</version>
       <version>0.0.2</version>
+      <version>n</version>
     </versions>
-    <lastUpdated>20190514085808</lastUpdated>
+    <lastUpdated>20190514091056</lastUpdated>
   </versioning>
 </metadata>
