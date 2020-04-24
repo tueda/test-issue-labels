@@ -5,7 +5,9 @@
 void print(std::ifstream& ifs);
 
 int main() {
-  std::ifstream ifs("test.txt");
+  std::ifstream ifs;
+  ifs.rdbuf()->pubsetbuf(nullptr, 0);
+  ifs.open("test.txt");
   std::streampos pos;
 
   print(ifs);
