@@ -1,0 +1,13 @@
+os:
+  - linux
+  - osx
+
+cache:
+  directories:
+    - texlive
+
+before_install:
+  - echo TODO
+
+script:
+  - MAKE_COLORS=always make -s check
