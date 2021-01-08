@@ -51,4 +51,6 @@ jobs:
         make check
     - uses: actions/upload-artifact@v2
       with:
-        path: sources/form.exe sources/tform.exe
+        path: |
+          sources/form.exe
+          sources/tform.exe
