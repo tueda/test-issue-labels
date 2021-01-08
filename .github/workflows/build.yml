@@ -26,6 +26,10 @@ jobs:
           base-devel
           git
           mingw-w64-x86_64-gcc
+          ruby
+    - name: Check
+      run: |
+        scripts/git-version-gen.sh -C . -v
     - name: Configure
       run: |
         autoreconf -iv
