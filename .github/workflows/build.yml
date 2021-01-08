@@ -18,6 +18,7 @@ jobs:
         repository: tueda/form
         #ref: fix-mingw-w64-v4.2.1
         ref: 2fccc56d77d20b96609ad3682178079f0466b38a
+        fetch-depth: 200
     - name: Set up MSYS2
       uses: msys2/setup-msys2@v2
       with:
@@ -27,9 +28,6 @@ jobs:
           git
           mingw-w64-x86_64-gcc
           ruby
-    - name: Check
-      run: |
-        scripts/git-version-gen.sh -C . -v
     - name: Configure
       run: |
         autoreconf -iv
