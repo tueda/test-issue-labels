@@ -32,6 +32,13 @@ jobs:
           --disable-native \
           --enable-scalar \
           --enable-threaded
+    - name: Check
+      run: |
+        cd sources
+        gcc -DHAVE_CONFIG_H -I. -I.. -Wall -Wextra -Wpadded -O3 -fomit-frame-pointer -E -o form-diagrams.i `test -f 'diagrams.c' || echo './'`diagrams.c
+    - uses: actions/upload-artifact@v2
+      with:
+        path: sources/*.i
     - name: Build
       run: |
         make
