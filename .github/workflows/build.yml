@@ -13,8 +13,10 @@ jobs:
     - name: Checkout FORM source code
       uses: actions/checkout@v2
       with:
-        repository: vermaseren/form
+        #repository: vermaseren/form
         #ref: v4.2.1
+        repository: tueda/form
+        ref: fix-mingw-w64-v4.2.1
     - name: Set up MSYS2
       uses: msys2/setup-msys2@v2
       with:
