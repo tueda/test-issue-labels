@@ -14,19 +14,10 @@ jobs:
       - uses: Gr1N/setup-poetry@v4
       - id: poetry-path
         run: echo "::set-output name=path::$(command -v poetry)"
-      - run: |
-          type python
-          type poetry
-          command -v python
-          command -v poetry
-          echo "$(command -v python)"
-          echo "$(command -v poetry)"
-          echo '1i#!${{ steps.python-path.outputs.path }}'
-          echo '{{ steps.poetry-path.outputs.path }}'
       - uses: actions/setup-python@v2
         with:
           python-version: 3.10-dev
-      - run: sed -i '1i#!${{ steps.python-path.outputs.path }}' '{{ steps.poetry-path.outputs.path }}'
+      - run: sed -i '1i#!${{ steps.python-path.outputs.path }}' '${{ steps.poetry-path.outputs.path }}'
       - run: poetry env use 3.10
 
       - run: poetry run python --version
