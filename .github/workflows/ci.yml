@@ -1,0 +1,19 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - id: python-path
+        run: echo "::set-output name=path::$(command -v python)"
+      - uses: Gr1N/setup-poetry@v4
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.10-dev
+      #- run: sed -i "#!${{ steps.python-path.outputs.path }}" ~/.poetry/bin/poetry
+      - run: poetry env use 3.10
+      - run: poetry run python --version
