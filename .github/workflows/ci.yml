@@ -14,6 +14,11 @@ jobs:
       - uses: Gr1N/setup-poetry@v4
       - id: poetry-path
         run: echo "::set-output name=path::$(command -v poetry)"
+      - run: |
+          type python
+          type poetry
+          echo '1i#!${{ steps.python-path.outputs.path }}'
+          echo '{{ steps.poetry-path.outputs.path }}'
       - uses: actions/setup-python@v2
         with:
           python-version: 3.10-dev
