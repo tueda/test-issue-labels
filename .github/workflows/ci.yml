@@ -15,7 +15,8 @@ jobs:
         with:
           packages: texlive-latex-base
 
-      - run: sudo apt-get install --nodeps texlive-latex-base
+      # - run: sudo apt-get install texlive-latex-base
+      - run: sudo dpkg-reconfigure texlive-latex-base
 
       - run: pdflatex test.tex
 
