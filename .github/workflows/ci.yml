@@ -11,16 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: dpkg -l
-
       - uses: awalsh128/cache-apt-pkgs-action@v1
         with:
           packages: texlive-latex-base
 
-      - run: dpkg -l
-
-      - run: sudo apt-get download texlive-latex-base
-      - run: ls
+      - run: apt-get download texlive-latex-base
+      - run: dpkg --unpack texlive-latex-base_*.deb
+      - run: dpkg --configure texlive-latex-base
 
       # - run: sudo apt-get install texlive-latex-base
       # - run: sudo dpkg-reconfigure texlive-latex-base
