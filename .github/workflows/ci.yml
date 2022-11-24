@@ -15,7 +15,7 @@ jobs:
         with:
           packages: texlive-latex-base
 
-      - run: sudo find / --name '*.deb'
+      - run: sudo find / -name '*.deb'
 
       # - run: apt-get download texlive-base
       # - run: sudo dpkg --unpack texlive-base_*.deb
