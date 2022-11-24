@@ -17,7 +17,7 @@ jobs:
 
       - run: apt-get download texlive-latex-base
       - run: sudo dpkg --unpack texlive-latex-base_*.deb
-      - run: sudo dpkg --configure texlive-latex-base
+      - run: sudo dpkg --ignore-depends=fonts-lmodern,texlive-base,texlive-binaries --configure texlive-latex-base
 
       - run: pdflatex test.tex
 
