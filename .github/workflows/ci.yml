@@ -15,6 +15,7 @@ jobs:
         with:
           packages: texlive-latex-base
           execute_install_scripts: true
+          debug: true
 
       - run: pdflatex test.tex
 
