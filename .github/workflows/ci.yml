@@ -15,8 +15,8 @@ jobs:
         with:
           packages: texlive-latex-base
 
-      - run: apt-get download texlive-base
-      - run: sudo dpkg --unpack texlive-base_*.deb
+      #- run: apt-get download texlive-base
+      #- run: sudo dpkg --unpack texlive-base_*.deb
       - run: sudo dpkg --ignore-depends=texlive-binaries --configure texlive-base
 
       - run: pdflatex test.tex
