@@ -17,6 +17,8 @@ jobs:
 
       - run: sudo find / -name '*.deb'
 
+      - run: ls -1 /var/lib/dpkg/info/*.*
+  
       # - run: apt-get download texlive-base
       # - run: sudo dpkg --unpack texlive-base_*.deb
       # - run: sudo dpkg --ignore-depends=texlive-binaries --configure texlive-base
