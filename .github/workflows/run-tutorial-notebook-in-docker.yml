@@ -80,7 +80,7 @@ jobs:
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
-      if: inputs.artifacts == ''
+      if: inputs.artifacts != ''
       with:
         name: artifact-${{ steps.uuid.outputs.value }}
         path: ${{ steps.artifact-path.outputs.value }}
