@@ -1,4 +1,4 @@
-# NOTE: this is a reusable workflow intended to be called from the Test workflow.
+# NOTE: this is a reusable workflow intended to be called from the Test workflows.
 name: Run tutorial notebook in Docker
 
 on:
@@ -56,10 +56,10 @@ jobs:
         docker run
           --rm
           -v $(pwd)/shared:/home/shared
-          -v $(pwd)/.github/workflows/run-tutorial-notebook.sh:/run-tutorial-notebook.sh:ro
+          -v $(pwd)/.github/workflows/scripts/run-tutorial-notebook.sh:/tmp/run-tutorial-notebook.sh:ro
           -w /home/shared/test1/${{ inputs.working-directory }}
           myimage:latest
-          bash /run-tutorial-notebook.sh ${{ inputs.notebook }}
+          bash /tmp/run-tutorial-notebook.sh ${{ inputs.notebook }}
 
     - name: Construct artifact path
       id: construct-artifact-path
