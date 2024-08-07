@@ -17,6 +17,9 @@ RUN python3 -m pip install --no-cache-dir \
     matplotlib
 
 FROM ubuntu:20.04 AS runner
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /opt/bin/increment /opt/bin/increment
 COPY --from=py_builder /usr/local/bin /usr/local/bin
 COPY --from=py_builder /usr/local/lib /usr/local/lib
