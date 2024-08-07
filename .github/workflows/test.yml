@@ -65,4 +65,4 @@ jobs:
     uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
-      notebook: test3b.ipynb
+      notebook: test3c.ipynb
