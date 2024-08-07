@@ -20,6 +20,8 @@ jobs:
         with:
           tags: myimage:latest
           outputs: type=docker,dest=/tmp/myimage.tar
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Upload the image as an artifact
         uses: actions/upload-artifact@v4
