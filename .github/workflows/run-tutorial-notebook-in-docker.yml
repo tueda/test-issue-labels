@@ -40,7 +40,7 @@ jobs:
         docker load --input /tmp/myimage.tar
         docker image ls -a
 
-    - name: Prepare a shared volume
+    - name: Prepare the shared volume
       run: |
         mkdir shared
         git -C shared clone --depth=1 --branch test-docker-notebooks https://github.com/tueda/test1.git

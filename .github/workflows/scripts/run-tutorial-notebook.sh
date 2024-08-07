@@ -1,4 +1,4 @@
-# NOTE: this is intended to be invoked within a container.
+# NOTE: this script is intended to be executed within a container.
 set -eu
 notebook_file=$1
 apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
