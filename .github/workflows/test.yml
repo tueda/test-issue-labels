@@ -29,7 +29,7 @@ jobs:
 
   test1:
     needs: build
-    uses: ./.github/workflows/scripts/run-tutorial-notebook-in-docker.yml
+    uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
       notebook: test1.ipynb
@@ -37,7 +37,7 @@ jobs:
 
   test2:
     needs: test1
-    uses: ./.github/workflows/scripts/run-tutorial-notebook-in-docker.yml
+    uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
       notebook: test2.ipynb
@@ -45,7 +45,7 @@ jobs:
 
   test3:
     needs: test2
-    uses: ./.github/workflows/scripts/run-tutorial-notebook-in-docker.yml
+    uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
       notebook: test3.ipynb
@@ -53,14 +53,14 @@ jobs:
 
   test3b:
     needs: test2
-    uses: ./.github/workflows/scripts/run-tutorial-notebook-in-docker.yml
+    uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
       notebook: test3b.ipynb
 
   test3c:
     needs: test2
-    uses: ./.github/workflows/scripts/run-tutorial-notebook-in-docker.yml
+    uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
       notebook: test3b.ipynb
