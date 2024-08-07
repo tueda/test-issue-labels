@@ -45,14 +45,11 @@ jobs:
         mkdir shared
         git -C shared clone --depth=1 --branch test-docker-notebooks https://github.com/tueda/test1.git
 
-    - name: Download artifacts uploaded by previous test jobs
+    - name: Download artifacts uploaded by previous jobs
       uses: actions/download-artifact@v4
       with:
-        name: artifact
+        name: artifact-*
         path: shared/test1
-      # Ignore "if-no-artifact" error.
-      # https://github.com/actions/download-artifact/issues/42#issuecomment-678769583
-      continue-on-error: true
 
     - name: Run the notebook in a container
       run:
@@ -77,6 +74,6 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: artifact
+        name: artifact-${{ github.job }}
         path: ${{ steps.construct-artifact-path.outputs.value }}
         if-no-files-found: error
