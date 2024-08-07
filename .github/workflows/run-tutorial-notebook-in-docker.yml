@@ -61,8 +61,10 @@ jobs:
           myimage:latest
           bash /tmp/run-tutorial-notebook.sh ${{ inputs.notebook }}
 
+    # Prepend the prefix to each path in the given list.
+    # The wildcard at the beginning is necessary to preserve the directory structure.
     - name: Construct artifact path
-      id: construct-artifact-path
+      id: artifact-path
       run: |
         eof=EOF$(openssl rand -hex 8)
         echo "value<<$eof" >>$GITHUB_OUTPUT
@@ -71,9 +73,14 @@ jobs:
         done
         echo "$eof" >>$GITHUB_OUTPUT
 
+    # We need a unique ID to prevent name conflict in uploading artifacts.
+    - name: Generate a unique ID
+      id: uuid
+      run: echo "value=$(uuidgen)" >>$GITHUB_OUTPUT
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: artifact-${{ github.job }}
-        path: ${{ steps.construct-artifact-path.outputs.value }}
+        name: artifact-${{ steps.uuid.outputs.value }}
+        path: ${{ steps.artifact-path.outputs.value }}
         if-no-files-found: error
