@@ -49,8 +49,16 @@ jobs:
     with:
       working-directory: examples/tutorial
       notebook: test3.ipynb
+      artifacts: test31.out test32.out
 
   test3b:
+    needs: test2
+    uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
+    with:
+      working-directory: examples/tutorial
+      notebook: test3b.ipynb
+
+  test3c:
     needs: test2
     uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
