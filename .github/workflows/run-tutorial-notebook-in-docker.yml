@@ -67,7 +67,7 @@ jobs:
         eof=EOF$(openssl rand -hex 8)
         echo "value<<$eof" >>$GITHUB_OUTPUT
         for f in ${{ inputs.artifacts }}; do
-          echo './*/shared/test1/${{ inputs.working-directory }}'/"$f" >>$GITHUB_OUTPUT
+          echo '*shared/test1/${{ inputs.working-directory }}'/"$f" >>$GITHUB_OUTPUT
         done
         echo "$eof" >>$GITHUB_OUTPUT
 
