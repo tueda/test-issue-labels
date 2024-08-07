@@ -27,13 +27,6 @@ jobs:
           name: image
           path: /tmp/myimage.tar
 
-      - name: Upload dummy artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifact-${{ github.job }}
-          path: .dummy
-          if-no-files-found: ignore
-
   test1:
     needs: build
     uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml

@@ -48,8 +48,9 @@ jobs:
     - name: Download artifacts uploaded by previous jobs
       uses: actions/download-artifact@v4
       with:
-        name: artifact-*
+        pattern: artifact-*
         path: shared/test1
+        merge-multiple: true
 
     - name: Run the notebook in a container
       run:
