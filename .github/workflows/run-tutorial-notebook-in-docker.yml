@@ -1,0 +1,79 @@
+# NOTE: this is a reusable workflow intended to be called from the Test workflow.
+name: Run tutorial notebook in Docker
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: Working directory
+        required: false
+        default: .
+        type: string
+      notebook:
+        description: Notebook to be executed
+        required: true
+        type: string
+      artifacts:
+        description: Artifacts to be uploaded
+        required: false
+        default: ''
+        type: string
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
+    - name: Download the image
+      uses: actions/download-artifact@v4
+      with:
+        name: image
+        path: /tmp
+
+    - name: Load the image
+      run: |
+        docker load --input /tmp/myimage.tar
+        docker image ls -a
+
+    - name: Prepare a shared volume
+      run: |
+        mkdir shared
+        git -C shared clone --depth=1 --branch test-docker-notebooks https://github.com/tueda/test1.git
+
+    - name: Download artifacts uploaded by previous test jobs
+      uses: actions/download-artifact@v4
+      with:
+        name: artifact
+        path: shared/test1
+      # Ignore "if-no-artifact" error.
+      # https://github.com/actions/download-artifact/issues/42#issuecomment-678769583
+      continue-on-error: true
+
+    - name: Run the notebook in a container
+      run:
+        docker run
+          --rm
+          -v $(pwd)/shared:/home/shared
+          -v $(pwd)/.github/workflows/run-tutorial-notebook.sh:/run-tutorial-notebook.sh:ro
+          -w /home/shared/test1/${{ inputs.working-directory }}
+          myimage:latest
+          bash /run-tutorial-notebook.sh
+
+    - name: Construct artifact path
+      id: construct-artifact-path
+      run: |
+        eof=EOF$(openssl rand -hex 8)
+        echo "value<<$eof" >>$GITHUB_OUTPUT
+        for f in ${{ inputs.artifacts }}; do
+          echo "${{ inputs.working-directory }}/$f" >>$GITHUB_OUTPUT
+        done
+        echo "$eof" >>$GITHUB_OUTPUT
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifact
+        path: ${{ steps.construct-artifact-path.outputs.value }}
+        if-no-files-found: error
