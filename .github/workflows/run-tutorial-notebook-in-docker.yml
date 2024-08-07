@@ -2,7 +2,7 @@
 # https://github.com/orgs/community/discussions/10773#discussioncomment-2107255
 
 # NOTE: this is a reusable workflow intended to be called from the Test workflows.
-name: Run tutorial notebook in Docker
+#name: Run tutorial notebook in Docker
 
 on:
   workflow_call:
