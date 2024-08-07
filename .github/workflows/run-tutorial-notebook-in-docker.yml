@@ -29,6 +29,9 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
 
+    - name: Debug
+      run: echo '${{ toJSON(github) }}'
+
     - name: Download the image
       uses: actions/download-artifact@v4
       with:
