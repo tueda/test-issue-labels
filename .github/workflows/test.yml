@@ -33,7 +33,7 @@ jobs:
     with:
       working-directory: examples/tutorial
       notebook: test1.ipynb
-      artifacts: test1.out
+      artifacts: data/test1.out
 
   test2:
     needs: test1
@@ -41,7 +41,7 @@ jobs:
     with:
       working-directory: examples/tutorial
       notebook: test2.ipynb
-      artifacts: test2.out
+      artifacts: data/test2.out
 
   test3:
     needs: test2
@@ -49,7 +49,7 @@ jobs:
     with:
       working-directory: examples/tutorial
       notebook: test3.ipynb
-      artifacts: test31.out test32.out
+      artifacts: data/test31.out data/test32.out
 
   test3b:
     needs: test2
