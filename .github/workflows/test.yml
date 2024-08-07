@@ -27,25 +27,32 @@ jobs:
           name: image
           path: /tmp/myimage.tar
 
-  test-1:
+  test1:
     needs: build
     uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
-      notebook: test-1.ipynb
-      artifacts: test-1.out
+      notebook: test1.ipynb
+      artifacts: test1.out
 
-  test-2:
-    needs: test-1
+  test2:
+    needs: test1
     uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
-      notebook: test-2.ipynb
-      artifacts: test-2.out
+      notebook: test2.ipynb
+      artifacts: test2.out
 
-  test-3:
-    needs: test-2
+  test3:
+    needs: test2
     uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
     with:
       working-directory: examples/tutorial
-      notebook: test-3.ipynb
+      notebook: test3.ipynb
+
+  test3b:
+    needs: test2
+    uses: ./.github/workflows/run-tutorial-notebook-in-docker.yml
+    with:
+      working-directory: examples/tutorial
+      notebook: test3b.ipynb
