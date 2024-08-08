@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          wget https://sipi.usc.edu/database/download.php?vol=misc&img=4.2.07
+          wget -O 4.2.07.tiff https://sipi.usc.edu/database/download.php?vol=misc&img=4.2.07
           convert 4.2.07.tiff peppers.png
 
       - uses: actions/upload-artifact@v4
