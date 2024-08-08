@@ -10,15 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          wget -O 4.2.07.tiff https://sipi.usc.edu/database/download.php?vol=misc&img=4.2.07
-          file 4.2.07.tiff
-          convert 4.2.07.tiff peppers.png
+          wget -O https://raw.githubusercontent.com/opencv/opencv/3.4/samples/data/fruits.jpg
 
       - uses: actions/upload-artifact@v4
         id: upload
         with:
-          path: peppers.png
+          path: fruits.jpg
 
       - run: |
           echo "![Image](${{ steps.upload.outputs.artifact-url }})" >>$GITHUB_STEP_SUMMARY
-          echo "![Image](${{ steps.upload.outputs.artifact-url }}/peppers.png)" >>$GITHUB_STEP_SUMMARY
+          echo "![Image](${{ steps.upload.outputs.artifact-url }}/fruits.jpg)" >>$GITHUB_STEP_SUMMARY
